@@ -1,0 +1,6 @@
+# ignore everything by default
+*
+
+!.vim
+!.vim/vimrc
+!.gitignore

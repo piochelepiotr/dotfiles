@@ -1,0 +1,48 @@
+set nocompatible
+" Initialisation de pathogen
+:set mouse=a
+call pathogen#infect()
+call pathogen#helptags()
+set number
+set expandtab
+set tabstop=4
+set shiftwidth=4
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+filetype plugin indent on
+syntax on
+runtime! config/**/*.vim
+map <C-t> :NERDTreeToggle<CR>
+map t :NERDTreeFind<CR>
+map <C-j> :vsp<CR>
+map <C-d> :wq<CR>
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-f> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['~/Documents/perso/minecraftClone/.ycm_extra_conf.py', '~/Downloads/test/.ycm_extra_conf.py']
+
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'lilydjwg/colorizer'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Valloric/YouCompleteMe'
+call plug#end()
+set backspace=indent,eol,start
+map ; :Files<CR>
+map m :Rg<CR>
+colorscheme codedark
+set laststatus=2
+"if !has(‘gui_running’)
+"  set t_Co=256
+"endif
+map f :wq<CR>
+map e :w<CR>
+map <C-g> :YcmCompleter GoToDefinition<CR>

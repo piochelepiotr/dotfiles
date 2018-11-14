@@ -1,3 +1,4 @@
+set shell=bash\ --login
 set nocompatible
 " Initialisation de pathogen
 :set mouse=a
@@ -40,9 +41,13 @@ map ; :Files<CR>
 map m :Rg<CR>
 colorscheme codedark
 set laststatus=2
-"if !has(‘gui_running’)
+"if !has('gui_running')
 "  set t_Co=256
 "endif
 map f :wq<CR>
 map e :w<CR>
-map <C-g> :YcmCompleter GoToDefinition<CR>
+nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map œ :q<CR>
+:silent !set_title %
+map N yiw/<C-r>0<CR>
+map Y "+y

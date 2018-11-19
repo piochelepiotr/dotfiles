@@ -1,4 +1,3 @@
-set shell=bash\ --login
 set nocompatible
 " Initialisation de pathogen
 :set mouse=a
@@ -32,9 +31,11 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'lilydjwg/colorizer'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe'
+Plug 'AndreaOrru/fzf-mopidy-spotify.vim'
 call plug#end()
 set backspace=indent,eol,start
 map ; :Files<CR>
@@ -46,8 +47,8 @@ set laststatus=2
 "endif
 map f :wq<CR>
 map e :w<CR>
-nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-g> :w<CR>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 map œ :q<CR>
-:silent !set_title %
+":silent !set_title %
 map N yiw/<C-r>0<CR>
 map Y "+y

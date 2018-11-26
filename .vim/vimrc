@@ -1,8 +1,5 @@
 set nocompatible
-" Initialisation de pathogen
 :set mouse=a
-call pathogen#infect()
-call pathogen#helptags()
 set number
 set expandtab
 set tabstop=4
@@ -13,10 +10,11 @@ syntax on
 runtime! config/**/*.vim
 map <C-t> :NERDTreeToggle<CR>
 map t :NERDTreeFind<CR>
-map <C-j> :vsp<CR>
 map <C-d> :wq<CR>
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-f> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -29,9 +27,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'fatih/vim-go'
 Plug 'lilydjwg/colorizer'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe'
@@ -52,3 +53,8 @@ map œ :q<CR>
 ":silent !set_title %
 map N yiw/<C-r>0<CR>
 map Y "+y
+map <C-p> <Esc>:%!json_xs -f json -t json-pretty<CR>
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']

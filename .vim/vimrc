@@ -60,3 +60,6 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 map R yiw:%s/<C-r>0/
+"help vim
+"  ., *, \, [, ^, and $ are metacharacters.
+"  +, ?, |, &, {, (, and ) must be escaped to use their special function.

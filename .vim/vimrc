@@ -37,6 +37,7 @@ Plug 'lilydjwg/colorizer'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe'
 Plug 'AndreaOrru/fzf-mopidy-spotify.vim'
+Plug 'dhruvasagar/vim-markify'
 call plug#end()
 set backspace=indent,eol,start
 map ; :Files<CR>

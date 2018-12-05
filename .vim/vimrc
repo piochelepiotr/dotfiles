@@ -38,6 +38,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe'
 Plug 'AndreaOrru/fzf-mopidy-spotify.vim'
 Plug 'dhruvasagar/vim-markify'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 set backspace=indent,eol,start
 map ; :Files<CR>
@@ -49,10 +50,10 @@ set laststatus=2
 "endif
 map f :wq<CR>
 map e :w<CR>
-nnoremap <C-g> :w<CR>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map œ :q<CR>
 ":silent !set_title %
-map N yiw/<C-r>0<CR>
+"map N yiw/<C-r>0<CR>
 map Y "+y
 map <C-p> <Esc>:%!json_xs -f json -t json-pretty<CR>
 let g:go_fmt_command = "goimports"

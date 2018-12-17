@@ -1,9 +1,6 @@
 set nocompatible
 :set mouse=a
 set number
-set expandtab
-set tabstop=4
-set shiftwidth=4
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 filetype plugin indent on
 syntax on
@@ -48,12 +45,10 @@ set laststatus=2
 "if !has('gui_running')
 "  set t_Co=256
 "endif
-map f :wq<CR>
-map e :w<CR>
 nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map œ :q<CR>
 ":silent !set_title %
-"map N yiw/<C-r>0<CR>
+map N yiw/<C-r>0<CR>
 map Y "+y
 map <C-p> <Esc>:%!json_xs -f json -t json-pretty<CR>
 let g:go_fmt_command = "goimports"
@@ -64,3 +59,8 @@ map R yiw:%s/<C-r>0/
 "help vim
 "  ., *, \, [, ^, and $ are metacharacters.
 "  +, ?, |, &, {, (, and ) must be escaped to use their special function.
+command Json %!python -m json.tool
+set expandtab
+set tabstop=4
+set shiftwidth=4
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4

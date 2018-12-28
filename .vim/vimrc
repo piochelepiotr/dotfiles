@@ -7,7 +7,6 @@ syntax on
 runtime! config/**/*.vim
 map <C-t> :NERDTreeToggle<CR>
 map t :NERDTreeFind<CR>
-map <C-d> :wq<CR>
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 map <C-j> <C-w>j

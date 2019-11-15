@@ -12,7 +12,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-f> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['~/Documents/perso/minecraftClone/.ycm_extra_conf.py', '~/Downloads/test/.ycm_extra_conf.py']
 
@@ -35,31 +34,27 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'AndreaOrru/fzf-mopidy-spotify.vim'
 Plug 'dhruvasagar/vim-markify'
 Plug 'leafgarland/typescript-vim'
+Plug 'nvie/vim-flake8'
 call plug#end()
 set backspace=indent,eol,start
+set grepprg=ag\ --vimgrep
 map ; :Files<CR>
 map m :Rg<CR>
 colorscheme codedark
 set laststatus=2
-"if !has('gui_running')
-"  set t_Co=256
-"endif
-nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map œ :q<CR>
-":silent !set_title %
-map N yiw/<C-r>0<CR>
 map Y "+y
 map <C-p> <Esc>:%!json_xs -f json -t json-pretty<CR>
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-map R yiw:%s/<C-r>0/
-"help vim
-"  ., *, \, [, ^, and $ are metacharacters.
-"  +, ?, |, &, {, (, and ) must be escaped to use their special function.
 command Json %!python -m json.tool
-set expandtab
 set tabstop=4
 set shiftwidth=4
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+set softtabstop=4
+set smartindent
+set expandtab
+
+" Run flake8
+autocmd FileType python map <buffer> <C-f> :call Flake8()<CR>
+let g:black_linelength = 120

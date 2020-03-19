@@ -71,3 +71,4 @@ map m :Rg<CR>
 
 " Python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+let g:black_linelength = 120

@@ -1,66 +1,73 @@
 set nocompatible
 :set mouse=a
 set number
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+set expandtab
+set tabstop=4
+set shiftwidth=4
 filetype plugin indent on
 syntax on
 runtime! config/**/*.vim
-map <C-t> :NERDTreeToggle<CR>
-map t :NERDTreeFind<CR>
-map <C-d> :wq<CR>
-map <C-l> <C-w>l
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-f> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['~/Documents/perso/minecraftClone/.ycm_extra_conf.py', '~/Downloads/test/.ycm_extra_conf.py']
+set backspace=indent,eol,start
+map Y "+y
 
 call plug#begin('~/.vim/plugged')
+" Fuzzy find
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" VS Code theme
 Plug 'tomasiser/vim-code-dark'
-Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
+" Git plugin
 Plug 'tpope/vim-fugitive'
+"Github
 Plug 'tpope/vim-rhubarb'
+"Main golang plugin
 Plug 'fatih/vim-go'
-Plug 'lilydjwg/colorizer'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'Valloric/YouCompleteMe'
-Plug 'AndreaOrru/fzf-mopidy-spotify.vim'
-Plug 'dhruvasagar/vim-markify'
-Plug 'leafgarland/typescript-vim'
+" Main markdown plugin
+Plug 'plasticboy/vim-markdown'
+" create tables in markdown
+Plug 'godlygeek/tabular'
 call plug#end()
-set backspace=indent,eol,start
-map ; :Files<CR>
-map m :Rg<CR>
+
 colorscheme codedark
-set laststatus=2
-"if !has('gui_running')
-"  set t_Co=256
-"endif
-nnoremap <C-g> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-map œ :q<CR>
-":silent !set_title %
-map N yiw/<C-r>0<CR>
-map Y "+y
-map <C-p> <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" You complete me
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+" Nerd tree
+" opens the nerdtree in the correct spot
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-t> :NERDTreeToggle<CR>
+map t :NERDTreeFind<CR>
+
+" Json
+command Json %!python -m json.tool
+
+" Golang
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-map R yiw:%s/<C-r>0/
-"help vim
-"  ., *, \, [, ^, and $ are metacharacters.
-"  +, ?, |, &, {, (, and ) must be escaped to use their special function.
-command Json %!python -m json.tool
-set expandtab
-set tabstop=4
-set shiftwidth=4
+let g:go_list_type = "quickfix"
+
+" Makefiles
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+
+" Several windows
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+
+" Search in project
+map ; :Files<CR>
+map m :Rg<CR>
+
+" Python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4

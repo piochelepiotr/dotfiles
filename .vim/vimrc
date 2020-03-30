@@ -65,9 +65,13 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 
-" Search in project
+" fzf Search in project
 map ; :Files<CR>
 map m :Rg<CR>
+map <C-e> :History<CR>
+" automatically save files before switching buffers
+:set hidden
+:set autowriteall
 
 " Python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4

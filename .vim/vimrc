@@ -36,12 +36,13 @@ colorscheme codedark
 
 " You complete me
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" navigation
+map gd :YcmCompleter GoTo<CR>
 
 " Nerd tree
 " opens the nerdtree in the correct spot
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-t> :NERDTreeToggle<CR>
-map t :NERDTreeFind<CR>
+map <C-y> :NERDTreeFind<CR>
 
 " Json
 command Json %!python -m json.tool

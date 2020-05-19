@@ -30,6 +30,10 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'plasticboy/vim-markdown'
 " create tables in markdown
 Plug 'godlygeek/tabular'
+" flutter development (see https://dev.to/tavanarad/vim-as-a-flutter-ide-4p16)
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
 call plug#end()
 
 colorscheme codedark
@@ -77,3 +81,6 @@ map <C-e> :History<CR>
 " Python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 let g:black_linelength = 120
+
+" Flutter
+let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
